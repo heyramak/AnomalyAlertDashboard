@@ -21,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table("anomaly")
 public class FraudAlertData implements Serializable{
 
-
+	@PrimaryKeyColumn(name = "id",ordinal = 0,type = PrimaryKeyType.PARTITIONED)
+	private String id;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "IST")
 	@PrimaryKeyColumn(name = "trans_time",ordinal = 1,type = PrimaryKeyType.CLUSTERED, ordering = Ordering.DESCENDING)
 	private Date trans_time;

@@ -7,14 +7,14 @@ import org.springframework.stereotype.Repository;
 
 
 /**
- * DAO class for fraud_transaction 
- * 
+ * DAO class for fraud_transaction
+ *
  * @author kafka
  *
  */
 @Repository
 public interface FraudAlertDataRepository extends CassandraRepository<FraudAlertData>{
 
-	 @Query("SELECT cc_num, trans_time, is_fraud, trans_num, category, merchant, amt, merch_lat, merch_long, distance, age FROM creditcard.fraud_transaction WHERE trans_time > ?0 ALLOW FILTERING" )
+	 @Query("SELECT id, duration, protocol_type, service, flag, src_bytes, dst_bytes, trans_time, xAttack FROM anomaly.anomaly WHERE trans_time > ?0 ALLOW FILTERING" )
 	 Iterable<FraudAlertData> findFraudDataByTimestamp(Long timestamp);
 }
