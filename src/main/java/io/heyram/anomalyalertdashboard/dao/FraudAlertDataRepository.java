@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FraudAlertDataRepository extends CassandraRepository<FraudAlertData>{
 
-	 @Query("SELECT id, duration, protocol_type, service, flag, src_bytes, dst_bytes, trans_time, xAttack FROM anomaly.anomaly WHERE trans_time > ?0 ALLOW FILTERING" )
+	 @Query("SELECT id, duration, protocol_type, service, flag, src_bytes, dst_bytes, trans_time, xAttack FROM intrusiondetection.anomaly WHERE trans_time > ?0 ALLOW FILTERING" )
 	 Iterable<FraudAlertData> findFraudDataByTimestamp(Long timestamp);
 }
