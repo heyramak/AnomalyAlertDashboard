@@ -77,6 +77,6 @@
 		</plugins>
 	</build>
 	<properties>
-		<start-class>io.heyram.anomalyalertdashboard.dashboard.FraudAlertDashboard</start-class>
+		<start-class>io.heyram.anomalyalertdashboard.dashboard.AnomalyAlertDashboard</start-class>
 	</properties>
 </project>

@@ -14,11 +14,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 @ComponentScan(basePackages = {"io.heyram.anomalyalertdashboard.dashboard", "io.heyram.anomalyalertdashboard.dao"})
-public class FraudAlertDashboard {
+public class AnomalyAlertDashboard {
 
 	  public static void main(String[] args)
 	  {
-		  SpringApplication.run(FraudAlertDashboard.class, args);
+		  SpringApplication.run(AnomalyAlertDashboard.class, args);
 	  }
 	}
 

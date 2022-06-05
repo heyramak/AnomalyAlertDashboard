@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  *
  */
 @Table("anomaly")
-public class FraudAlertData implements Serializable{
+public class AnomalyAlertData implements Serializable{
 
 	@PrimaryKeyColumn(name = "id",ordinal = 0,type = PrimaryKeyType.PARTITIONED)
 	private String id;
@@ -30,8 +30,8 @@ public class FraudAlertData implements Serializable{
 	private String xAttack;
 	@Column(value = "duration")
 	private Double duration;
-	@Column(value = "protocol_type")
-	private String protocol_type;
+	//@Column(value = "protocol_type")
+	//private String protocol_type;
 	@Column(value = "service")
 	private String service;
 	@Column(value = "flag")
@@ -40,6 +40,28 @@ public class FraudAlertData implements Serializable{
 	private Double src_bytes;
 	@Column(value = "dst_bytes")
 	private Double dst_bytes;
+
+	@Override
+	public String toString() {
+		return "AnomalyAlertData{" +
+				"id='" + id + '\'' +
+				", trans_time=" + trans_time +
+				", xAttack='" + xAttack + '\'' +
+				", duration=" + duration +
+				", service='" + service + '\'' +
+				", flag='" + flag + '\'' +
+				", src_bytes=" + src_bytes +
+				", dst_bytes=" + dst_bytes +
+				'}';
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public Date getTrans_time() {
 		return trans_time;
@@ -63,14 +85,6 @@ public class FraudAlertData implements Serializable{
 
 	public void setDuration(Double duration) {
 		this.duration = duration;
-	}
-
-	public String getProtocol_type() {
-		return protocol_type;
-	}
-
-	public void setProtocol_type(String protocol_type) {
-		this.protocol_type = protocol_type;
 	}
 
 	public String getService() {
@@ -105,17 +119,4 @@ public class FraudAlertData implements Serializable{
 		this.dst_bytes = dst_bytes;
 	}
 
-	@Override
-	public String toString() {
-		return "FraudAlertData{" +
-				"trans_time=" + trans_time +
-				", xAttack='" + xAttack + '\'' +
-				", duration=" + duration +
-				", protocol_type='" + protocol_type + '\'' +
-				", service='" + service + '\'' +
-				", flag='" + flag + '\'' +
-				", src_bytes=" + src_bytes +
-				", dst_bytes=" + dst_bytes +
-				'}';
-	}
 }

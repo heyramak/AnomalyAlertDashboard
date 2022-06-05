@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Fraud Alert Monitoring Dashboard</title>
+    <title>Anomalies Monitoring Dashboard</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-12">
             <h2 class="text-center">
-                Fraud Alert Monitoring Dashboard
+                Anomalies Monitoring Dashboard
             </h2>
         </div>
     </div>
@@ -23,12 +23,13 @@
             <table class="table table-bordered table-condensed table-hover outerTable">
                 <thead>
                 <tr>
-                    <th>duration</th>
-                    <th>protocol_type</th>
-                    <th>service</th>
-                    <th>flag</th>
-                    <th>src_bytes</th>
-                    <th>dst_bytes</th>
+                    <th>Id</th>
+                    <th>Time</th>
+                    <th>Duration</th>
+                    <th>Service</th>
+                    <th>Flag</th>
+                    <th>Src_bytes</th>
+                    <th>Dst_bytes</th>
                     <th>xAttack</th>
                 </tr>
                 </thead>
@@ -37,7 +38,7 @@
 
 
                     <td>
-                        <div id="fraud_alert">
+                        <div id="anomaly_alert">
                             <table class="table table-bordered table-condensed table-hover innerTable">
                                 <tr>
                                     <thead>
@@ -63,29 +64,29 @@
 <script type="text/javascript">
 	
 			//tables
-			var fraudAlertList = jQuery("#fraud_alert");
+			var anomalyAlertList = jQuery("#anomaly_alert");
 
 			//use sockjs			
 			var socket = new SockJS('/stomp');
 			var stompClient = Stomp.over(socket);
-			var t_tabl_start = "<table class='table table-bordered table-condensed table-hover innerTable'><thead><tr><th>duration</th><th>protocol_type</th><th>service</th><th>flag</th><th>src_bytes</th><th>dst_bytes</th><th>xAttack</th></tr></thead>";
+			var t_tabl_start = "<table class='table table-bordered table-condensed table-hover innerTable'><thead><tr><th>id</th><th>trans_time</th><th>duration</th><th>service</th><th>flag</th><th>src_bytes</th><th>dst_bytes</th><th>xAttack</th></tr></thead>";
 					var t_tabl_body_start = "<body>";
 					var t_tabl_body_end = "</body>";
 					var t_tabl_end = "</table>";
-				fraudAlertList.html(t_tabl_body_start);
+				anomalyAlertList.html(t_tabl_body_start);
             stompClient.connect({ }, function(frame) {
-				stompClient.subscribe("/topic/fraudData", function(data) {
+				stompClient.subscribe("/topic/anomalyData", function(data) {
 					var dataList = data.body;
 					var resp=jQuery.parseJSON(dataList);
 					//Fraud data
 					var totalOutput='';
-					jQuery.each(resp.fraudAlert, function(i,vh) {
-						 totalOutput +="<tr><td>"+ vh.duration+"</td><td>"+vh.protocal_type+"</td><td>"+vh.service+"</td><td>"+ vh.flag+"</td><td>"+vh.src_bytes+"</td><td>"+vh.dst_bytes+"</td><td>"+vh.xAttack+"</td></tr>";
-					});
-					var t_tabl_start = "<table class='table table-bordered table-condensed table-hover innerTable'><thead><tr><th>cc_num</th><th>trans_time</th><th>trans_num</th><th>category</th><th>merchant</th><th>amt</th><th>distance</th><th>age</th></tr></thead>";
+					jQuery.each(resp.anomalyAlert, function(i,vh) {
+						 totalOutput +="<tr><td>"+ vh.id+"</td><td>"+vh.trans_time+"</td><td>"+ vh.duration+"</td><td>"+vh.service+"</td><td>"+ vh.flag+"</td><td>"+vh.src_bytes+"</td><td>"+vh.dst_bytes+"</td><td>"+vh.xAttack+"</td></tr>";
+					});<td>"+ vh.duration+"</td>
+					var t_tabl_start = "<table class='table table-bordered table-condensed table-hover innerTable'><thead><tr><th>id</th><th>trans_time</th><th>duration</th><th>service</th><th>flag</th><th>src_bytes</th><th>dst_bytes</th><th>xAttack</th></tr></thead>";
 					var t_tabl_end = "</table>";
 				 $("table tbody").append(totalOutput);
-					fraudAlertList.html(t_tabl_body_end+t_tabl_end);
+					anomalyAlertList.html(t_tabl_body_end+t_tabl_end);
 
 				});
 

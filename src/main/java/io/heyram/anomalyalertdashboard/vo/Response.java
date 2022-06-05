@@ -1,6 +1,6 @@
 package io.heyram.anomalyalertdashboard.vo;
 
-import io.heyram.anomalyalertdashboard.dao.entity.FraudAlertData;
+import io.heyram.anomalyalertdashboard.dao.entity.AnomalyAlertData;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,13 +14,13 @@ import java.util.List;
  *
  */
 public class Response implements Serializable {
-	private List<FraudAlertData> fraudAlert;
+	private List<AnomalyAlertData> anomalyAlert;
 	
-	public List<FraudAlertData> getFraudAlert() {
-		return fraudAlert;
+	public List<AnomalyAlertData> getAnomalyAlert() {
+		return anomalyAlert;
 	}
-	public void setFraudAlert(List<FraudAlertData> fraudAlert) {
-		this.fraudAlert = fraudAlert;
+	public void setAnomalyAlert(List<AnomalyAlertData> anomalyAlert) {
+		this.anomalyAlert = anomalyAlert;
 	}
 
 }
