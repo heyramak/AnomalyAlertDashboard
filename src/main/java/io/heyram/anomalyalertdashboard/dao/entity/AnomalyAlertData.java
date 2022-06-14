@@ -12,12 +12,7 @@ import org.springframework.data.cassandra.mapping.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-/**
- * Entity class for anomaly db table
- * 
- * @author kafka
- *
- */
+
 @Table("anomaly")
 public class AnomalyAlertData implements Serializable{
 

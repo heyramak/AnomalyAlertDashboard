@@ -6,12 +6,6 @@ import org.springframework.data.cassandra.repository.Query;
 import org.springframework.stereotype.Repository;
 
 
-/**
- * DAO class for fraud_transaction
- *
- * @author kafka
- *
- */
 @Repository
 public interface AnomalyAlertDataRepository extends CassandraRepository<AnomalyAlertData>{
 

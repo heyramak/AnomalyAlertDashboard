@@ -78,11 +78,11 @@
 				stompClient.subscribe("/topic/anomalyData", function(data) {
 					var dataList = data.body;
 					var resp=jQuery.parseJSON(dataList);
-					//Fraud data
+					//ANomaly data
 					var totalOutput='';
 					jQuery.each(resp.anomalyAlert, function(i,vh) {
 						 totalOutput +="<tr><td>"+ vh.id+"</td><td>"+vh.trans_time+"</td><td>"+ vh.duration+"</td><td>"+vh.service+"</td><td>"+ vh.flag+"</td><td>"+vh.src_bytes+"</td><td>"+vh.dst_bytes+"</td><td>"+vh.xAttack+"</td></tr>";
-					});<td>"+ vh.duration+"</td>
+					});
 					var t_tabl_start = "<table class='table table-bordered table-condensed table-hover innerTable'><thead><tr><th>id</th><th>trans_time</th><th>duration</th><th>service</th><th>flag</th><th>src_bytes</th><th>dst_bytes</th><th>xAttack</th></tr></thead>";
 					var t_tabl_end = "</table>";
 				 $("table tbody").append(totalOutput);

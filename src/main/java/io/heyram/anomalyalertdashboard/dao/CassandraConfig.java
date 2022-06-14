@@ -11,12 +11,6 @@ import org.springframework.data.cassandra.mapping.BasicCassandraMappingContext;
 import org.springframework.data.cassandra.mapping.CassandraMappingContext;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
-/**
- * Spring bean configuration for Cassandra db.
- * 
- * @author kafka
- *
- */
 @Configuration
 @PropertySource(value = {"classpath:anomalyalert.properties"})
 @EnableCassandraRepositories(basePackages = {"io.heyram.anomalyalertdashboard.dao"})

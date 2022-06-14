@@ -38,7 +38,7 @@ public class AnomalyAlertService {
 	private static final DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 
-	//Method sends fraud transaction message in every 5 seconds.
+	//Method sends anomaly message in every 5 seconds.
 	@Scheduled(fixedRate = 5000)
 	public void trigger() {
 

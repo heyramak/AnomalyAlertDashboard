@@ -7,12 +7,6 @@ import java.util.List;
 
 
 
-/**
- * Response object containing creditcard fraud details that will be sent to dashboard.
- * 
- * @author kafka
- *
- */
 public class Response implements Serializable {
 	private List<AnomalyAlertData> anomalyAlert;
 	
